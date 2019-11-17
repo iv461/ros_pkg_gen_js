@@ -1,0 +1,9 @@
+<launch>
+<node pkg="{{PackageName}}"
+type="{{PackageName}}_node"
+name="{{PackageName}}_test_launch"
+output="screen">
+<rosparam
+file="$(find {{PackageName}})/launch/params.yaml"/>
+</node>
+</launch>

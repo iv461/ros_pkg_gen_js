@@ -1,0 +1,15 @@
+<launch>
+<arg name="manager" value="nodelet_manager" />
+
+<node pkg="nodelet" type="nodelet" name="$(arg manager)"
+args="manager" output="screen"/>
+
+<node pkg="nodelet" type="nodelet" name="{{PackageName}}_test_nodelet"
+args="load {{PackageName}}/{{PackageClassName}}Nodelet $(arg manager)"
+output="screen">
+
+<rosparam
+file="$(find {{PackageName}})/launch/params.yaml"/>
+
+</node>
+</launch>
