@@ -1,4 +1,3 @@
 *.swp
 *.autosave
 node_modules
-package-lock.json

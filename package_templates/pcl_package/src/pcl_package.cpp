@@ -14,8 +14,7 @@ ros::NodeHandle &private_node_handle) :
 {% endif %}
 {% if bond_used %}
     ,m_alive_bond("alive",
-                 private_node_handle.getNamespace().substr(1),
-                 node_handle, true)
+                 private_node_handle.getNamespace().substr(1))
 {% endif %}
 {
 {% if dynamic_reconfigure_used %}
@@ -50,7 +49,7 @@ void {{PackageClassName}}::init_on_param_change() {
                                         &{{PackageClassName}}::pcl_callback,
                                         this);
 
-    // change here all other things which depend on parameters
+    // perform here changes that depend on parameters
 }
 
 
@@ -75,7 +74,6 @@ void {{PackageClassName}}::loop(bool do_spin) {
         while(ros::ok()) {
 
             // publish here something
-
             if(do_spin) {
                 ros::spinOnce();
             }
@@ -84,13 +82,8 @@ void {{PackageClassName}}::loop(bool do_spin) {
         }
     });
     if(do_spin) {
-        // the loop function does not return until the thread returns if we call
-        // join (join blocks here)
         spin_thread.join();
     } else {
-        // if we don't want to block we call detach so the
-        // thread can run independently of its std::thread object (which
-        // gets destructed on returning of this function )
         spin_thread.detach();
     }
 }

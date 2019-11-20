@@ -1,8 +1,8 @@
 "use strict";
-const path = require('path');
+const path = require("path");
 const nj = require("nunjucks")
-const fs = require('fs');
-const os = require('os');
+const fs = require("fs");
+const os = require("os");
 
 // these nice SO code snippets
 const ensure_directory_existence = (filePath) => {
@@ -24,11 +24,11 @@ const snake_case_to_pascal_case = (str) => {
   let first_upper = str.charAt(0).toUpperCase() + str.slice(1);
   return first_upper.replace(/([-_][a-z])/g, (group) =>
       group.toUpperCase()
-                    .replace('-', '')
-                    .replace('_', ''));
+                    .replace("-", "")
+                    .replace("_", ""));
 };
 
-const rem_first_after_underscore = (str) => str.substring(str.indexOf('_') + 1);
+const rem_first_after_underscore = (str) => str.substring(str.indexOf("_") + 1);
 
 const package_name_to_class_name = (str) => snake_case_to_pascal_case
 (rem_first_after_underscore(str));
@@ -51,7 +51,7 @@ const main = () => {
     const available_options_str = 'node create_package.js \
 \'{ \
 "template_name":"<template_name>", "name":"<package_name>", ["nodelet_used":<bool value>], ["bond_used":<bool value>],\
-["dynamic_reconfigure_used":<bool value>], ["author":"<author>"], ["author_mail":"\
+["dynamic_reconfigure_used":<bool value>], ["namespace":"<namespace>"], ["author":"<author>"], ["author_mail":"\
 <author_mail>"], ["license":"<license>"], ["description": "<description>"],\
 ["license": "<license>"], ["path": "<path>"]\
 }\'';
@@ -74,7 +74,7 @@ const main = () => {
     "TargetPath": (options.path || (os.homedir() + "/catkin_ws/src/")),
     "PackageNameUpperCase": (options.name || "").toUpperCase(),
     "PackageClassName": package_name_to_class_name(options.name || ""),
-	"Namespace" : (options.namespace || "ns"),
+	  "Namespace" : (options.namespace || "ns"),
     "Author": (options.author || "TODO"),
     "AuthorMail": (options.author_mail || "todo@example.com"),
     "License": (options.license || "All rights reserved."),

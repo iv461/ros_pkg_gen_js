@@ -82,7 +82,7 @@ ros::Publisher m_publisher;
 bond::Bond m_alive_bond;
 {% endif %}
 
-tf::TransformListener tf_listener;
+tf::TransformListener m_tf_listener;
 
 {% if dynamic_reconfigure_used %}
 using dyn_cfg_t = {{PackageName}}::{{PackageName}}Config;
