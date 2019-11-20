@@ -19,7 +19,7 @@ An example C++ package named ``pcl_package`` is provided in the ``package_templa
 "dynamic_reconfigure_used":<bool ovalue>}' ``
 
 The package generator now writes the package to the default location ``~/catkin_ws/src`` (customizable with ``path`` parameter).
-It also sets necessary permissions in the case ``dynamic_reconfigure`` is used so the package 
+It also sets necessary permissions in the case ``dynamic_reconfigure`` is used so the package
 can be build immediatly e.g with ``catkin_make``.
 
 # TODOs
@@ -28,4 +28,4 @@ can be build immediatly e.g with ``catkin_make``.
 
 # License
 
-Licensed under the BSD-3 license.
+Licensed under the [BSD-3 license](LICENSE).
